@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 50px;
+}
+.information-box {
+    grid-area: information-box;
+}
+.image-box {
+    grid-area: image-box;
+}
+.grid-container {
+    display: grid;
+    grid-template-areas: "information-box image-box";
+}
+form {
+    opacity: 0.7;
+}
+.box {
+    height: 30px;
+    width: 400px;
+    padding-left: 30px;
+    margin: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+h1 {
+    text-align: center;
+}
+#container {
+    position: relative;
+}
+#container i {
+    position: absolute;
+    left: 15px;
+    top: 20px;
+}
+#country {
+    height: 35px;
+    width: 175px;
+    padding-left: 30px;
+}
+#post {
+    height: 30px;
+    width: 175px;
+    padding-left: 30px;
+}
+#foot-box {
+    position: relative;
+    float: left;
+}
+#foot-box i {
+    position: absolute;
+    left: 15px;
+    top: 70px;
+}
+.clear {
+    clear: both;
+}
+#information-box {
+    margin-top: 20px;
+}
+#submit-btn {
+    margin-top: 20px;
+    margin-left: 20rem;
+    border: none;
+    border-radius: 10px;
+    color: beige;
+    background-color: orange;
+    font-weight: 700;
+    width: 6rem;
+    height: 2.5rem;
+}
+.pay-box {
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid gray;
+    width: 25rem;
+    height: 27rem;
+    background-color: rgba(131, 133, 117, 0.158);
+    border-radius: 20px;
+    margin-left: 5rem;
+}
+img {
+    width: 30%;
+    margin: 10px;
+    border-radius: 10px;
+}
+#bag,
+#shoes {
+    display: flex;
+    margin-left: 25px;
+}
+@media screen and (max-width:700px) {
+    .grid-container {
+        display: grid;
+        grid-template-areas: "image-box" "information-box";
+    }
+    .pay-box {
+        margin: 0vw 0vw;
+    }
+    body {
+        overflow-x: hidden;
+    }
+    #mynumber,
+    #mynumber1 {
+        padding-left: 15px !important;
+    }
+}

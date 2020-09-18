@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="https://kit.fontawesome.com/5c7edfd842.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>Checkout</h1>
+    <div class="grid-container">
+        <div class="information-box">
+            <form action="#">
+                <h3>Contact Information</h3>
+                <label for="email">Email</label><br />
+                <div id="container">
+                    <i class="fa fa-envelope"></i>
+                    <input type="email" class="box" id="email" name="email" placeholder="Enter your email..." required />
+                </div>
+                <label for="tel">Phone</label><br />
+                <div id="container">
+                    <i class="fa fa-phone"></i>
+                    <input type="tel" class="box" id="tel" name="tel" placeholder="Enter your phone..." pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" required />
+                </div>
+                <h3>Shipping Address</h3>
+                <label for="name">Full name</label><br />
+                <div id="container">
+                    <i class="fa fa-user"></i>
+                    <input type="text" class="box" id="name" name="name" placeholder="Enter your full name..." required />
+                </div>
+                <label for="address">Address</label><br />
+                <div id="container">
+                    <i class="fa fa-home"></i>
+                    <input type="text" class="box" id="address" name="address" placeholder="Enter your address..." required />
+                </div>
+                <label for="city">City</label><br />
+                <div id="container">
+                    <i class="fa fa-city"></i>
+                    <input type="text" class="box" id="city" name="city" placeholder="Enter your city..." required />
+                </div>
+                <div id="foot-box">
+                    <p>Country</p>
+                    <i class="fa fa-globe"></i>
+                    <select name="country" id="country" class="box">
+                        <option value="Turkey">Turkey</option>
+                        <option value="Canada">Canada</option>
+                        <option value="USA">USA</option>
+                        <option value="Germany">Germany</option>
+                        <option value="UK">UK</option>
+                    </select>
+                </div>
+                <div id="foot-box">
+                    <p>Post Code</p>
+                    <i class="fa fa-mail-bulk"></i>
+                    <input class="box" type="text" id="post" placeholder="Enter your post code..." />
+                </div>
+                <div class="clear"></div>
+                <div id="information-box">
+                    <input type="checkbox" id="information" name="information" value="information" />
+                    <label for="information">See this information next time</label>
+                </div>
+                <button type="submit" id="submit-btn">Countinue</button>
+            </form>
+        </div>
+        <div class="image-box">
+            <div class="pay-box">
+                <div id="bag">
+                    <img src="./image/bag.jpg" alt="#">
+                    <div id="brand">
+                        <h3>Vintage Backbag</h3>
+                        <p> <strong style="color: rgba(255, 166, 0, 0.884);"><span>$ <i id="price1">54.99</i> </span></strong> <small><del>$94.99</del> </small> </p>
+                        <div class="quantity" style="position: relative;">
+                            <button onclick="downfunction('bagQuantity'); " style="position: absolute; left: 5px; top: 7.5px;border-radius:5px; border: none;"><i class="fa fa-minus" style="font-size:20px"></i></button>
+                            <input readonly type="number" id="bagQuantity" value="0" min="0" style="height:30px;text-align: center; padding-left: 20px; font-size: larger; width: 90px;">
+                            <button onclick="upfunction('bagQuantity'); " style="position: absolute; right: 40px; top: 7.5px; border-radius:5px; border: none;"><i class="fa fa-plus" style="font-size:20px"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div id="shoes">
+                    <img src="./image/shoes.jpg" alt="">
+                    <div id="brand">
+                        <h3>Levi Shoes</h3>
+                        <p> <strong style="color: rgba(255, 166, 0, 0.884);"><span>$ <i id="price2">74.99</i> </span></strong> <small><del>$124.99</del> </small></p>
+                        <div class="quantity" style="position: relative;">
+                            <button onclick="downfunction('shoesQuantity');" style="position: absolute; left: 5px; top: 7.5px;border-radius:5px; border: none;"><i class="fa fa-minus" style="font-size:20px"></i></button>
+                            <input readonly type="number" id="shoesQuantity" value="0" min="0" style="height:30px;text-align: center; padding-left: 20px; font-size: larger; width: 90px;">
+                            <button onclick="upfunction('shoesQuantity'); " style="position: absolute; right: 5px; top: 7.5px; border-radius:5px; border: none;"><i class="fa fa-plus" style="font-size:20px"></i></button>
+                        </div>
+                    </div>
+                </div id="price">
+                <hr style="margin: 10px 30px; ">
+                <p style="margin-left:30px ;">Shipping <span style="float: right; margin-right: 30px;">$ <i id="price3">19</i> </span></p>
+                <hr style="margin: 10px 30px; ">
+                <p style="margin-left:30px ;">Total <span style="float: right; margin-right: 30px;">$ <i id="total">  </i> </span></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        var z = parseFloat(document.getElementById("price3").innerHTML);
+        document.getElementById("total").innerHTML = z.toFixed(2);
+        function calculateTotal() {
+        var x = parseFloat(document.getElementById("price1").innerHTML);
+        var x1 = parseInt(document.getElementById("bagQuantity").value);
+        var y = parseFloat(document.getElementById("price2").innerHTML);
+        var y1 = parseInt(document.getElementById("shoesQuantity").value);
+        var z = parseFloat(document.getElementById("price3").innerHTML);
+            var total = (x * x1) + (y * y1) + z;
+            document.getElementById("total").innerHTML = "";
+            document.getElementById("total").innerHTML = total.toFixed(2);
+        }
+        function upfunction(quantity) {
+            document.getElementById(quantity).stepUp(1);
+            calculateTotal();
+        }
+        function downfunction(quantity) {
+            document.getElementById(quantity).stepDown(1);
+            calculateTotal();
+        }
+    </script>
+</body>
+</html>
